@@ -24,7 +24,7 @@
 Також доступні пакети для різних дистрибутивів:
 
 * [ArchLinux](https://wiki.archlinux.org/index.php/D_(programming_language))
-* [Debian/Ubuntu](http://d-apt.sourceforge.net).
+* [Debian/Ubuntu](http://d-apt.sourceforge.net)
 * [Fedora/CentOS](http://dlang.org/download.html#dmd)
 * [Gentoo](https://wiki.gentoo.org/wiki/Dlang)
 * [OpenSuse](http://dlang.org/download.html#dmd)
@@ -32,7 +32,7 @@
 ### Інші компілятори
 
 Крім референс-компілятора DMD, який використовує свій власний backend,
-існують ще два компілятора, які Ви можете знайти у секції завантажень сайту
+існують ще два компілятори, які Ви можете знайти у секції завантажень сайту
 [dlang.org](https://dlang.org):
 
 * [**GDC**](http://gdcproject.org/downloads) використовує GCC backend
