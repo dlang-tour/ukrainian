@@ -1,56 +1,54 @@
-# Welcome to D
+# Ласкаво просимо до D
 
-Welcome to the interactive tour of the *D Programming language*.
+Ласкаво просимо до інтерактивного туру з *мови програмування D*. 
 
 {{#dmanmobile}}
 
-This tour gives an overview of this __powerful__ and __expressive__
-language which compiles directly to __efficient__, __native__ machine code.
+Цей тур описує __потужну__ і __виразну__ мову програмування,
+яка компілює безпосередньо у __ефективний__ машинний код.
 
 {{/dmanmobile}}
 
-### What is D?
+### Що є D?
 
-D is the culmination of _decades of experience implementing compilers_
-for many diverse languages and has a large number of
-[unique features](http://dlang.org/overview.html):
+D є кульмінацією _десятиліть досвіду реалізації компіляторів_
+для багатьох мов програмування і має велику кількість
+[унікальних можливостей](http://dlang.org/overview.html):
 
 {{#dmandesktop}}
 
-- _high level_ constructs for great modeling power
-- _high performance_, compiled language
-- static typing
-- evolution of C++ (without the mistakes)
-- direct interface to the operating system API's and hardware
-- blazingly fast compile-times
-- allow memory-safe programming (SafeD)
-- _maintainable_, _easy to understand_ code
-- short learning curve (C-like syntax, similar to Java and others)
-- compatible with C application binary interface
-- multi-paradigm (imperative, structured, object oriented, generic, functional programming purity, and even assembly)
-- built-in error prevention (contracts, unittests)
+- _високо рівневі_ конструкції для гнучкого моделювання
+- _висока продуктивність_ компільованої мови
+- статична типізація
+- еволюція C++ (без помилок)
+- прямий інтерфейс до API операційної системи та апаратних засобів
+- неймовірно швидка компіляція
+- безпечний доступ до пам'яті (SafeD)
+- _легко виправний_, _зрозумілий_ код
+- коротка крива навчання (C-подібний синтакс, подібний до Java та інших мов)
+- сумісність з додатками на мові C на рівні бінарного інтерфейсу
+- мультипарадигмальність (імпепативна, структурована, об’єктно орієнтована, загальна, функціональна і навіть асемблеровими вставками)
+- вбудоване запобігання помилок (контракти, Unit-тестування)
 
-... and many more [features](http://dlang.org/overview.html).
+... та багато інших [можливостей](http://dlang.org/overview.html).
 
 {{/dmandesktop}}
 
-### About the tour
+### Про цей тур
 
-Each section comes with a source code example that can be modified and used
-to experiment with D's language features.
-Click the run button (or `Ctrl-enter`) to compile and run it.
+Кожна секція поставляється з джерельним кодом, який може бути модифікований і використаний для експериментів з різними можливостями мови D.
+Натисніть кнопку __Run__ (чи `Ctrl-enter`), щоб зібрати і запустити програму.
 
-### Contributing
+### Підтримка
 
-This tour is [open source](https://github.com/stonemaster/dlang-tour)
-and we are glad about pull requests making this tour even better.
+Цей тур постачається з [відкритим джерельним кодом](https://github.com/stonemaster/dlang-tour) і ми раді бачити [pull requests](https://help.github.com/articles/about-pull-requests/), які робитимуть цей тур ще кращим.
 
 ## {SourceCode}
 
 ```d
 import std.stdio;
 
-// Let's get going!
+// Давайте зробимо це!
 void main()
 {
     writeln("Hello World!");
