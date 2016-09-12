@@ -1,76 +1,70 @@
-# Arrays
+# Масиви
 
-There are two types of Arrays in D: **static** and **dynamic**
-arrays. Access to arrays of any kind is always bounds checked -
-a failed range check yields a `RangeError` which aborts the application.
-The brave can disable this with the compiler flag `-boundschecks=off` to squeeze
-the last cycles out of their binary.
+Є два типи масивів в D: **статичний** і **динамічний**
+масиви. Доступ до масивів будь-якого роду завжди перевіряється на вихiд за межи масиву -
+невдала перевірка діапазону дає `RangeError`, який перериває виконання програми.
+Якщо ви хоробрий, то можете відключити перевiрку за допомогою опцii компілятора `-boundschecks = off` вичавлювати
+останні цикли процесора.
 
-#### Static arrays
+#### Статичнi масиви
 
-Static arrays are stored on the stack if defined inside a function
-or in static memory otherwise.  They have a fixed,
-compile-time known length. A static array's type includes
-the fixed size:
+Статичні масиви зберігаються в стеку, якщо вони визначені всередині функції
+або в статичної пам'яті в іншому випадку. Вони мають фіксовану,
+під час компіляції довжину. Статичний тип масиву включає в себе
+фіксований розмір:
 
     int[8] arr;
 
-`arr`'s type is `int[8]`. Note that the size of the array is denoted
-near the type and not after the variable name like in C/C++.
+Типом `arr` є `int [8]`. Зверніть увагу, що розмір масиву позначається
+поруч з типом, а не після змінної, як в C / C ++.
 
-#### Dynamic arrays
+#### Динамiчнi масиви
 
-Dynamic arrays are stored on the heap and can be expanded
-or shrunk at runtime. A dynamic array is created using a `new` expression
-and its length:
+Динамічні масиви зберігаються в купі і можуть бути розширенi
+або стиснутi під час виконання. Динамічний масив створюється за допомогою вираза `new` та потрiбної довжини:
 
     int size = 8; // run-time variable
     int[] arr = new int[size];
 
-The type of `arr` is `int[]` which is a **slice**
-and will be explained in more detail in the next section. Multi-dimensional
-arrays can be created easily using the `auto arr = new int[3][3]` syntax.
+Типом `arr` є `int []`, який є **зрiзом**, що буде пояснено більш детально в наступному розділі. Багатовимірнi
+масиви можуть бути легко створені за допомогою синтаксису `auto arr = new int[3][3]`.
 
-#### Array operations and properties
+#### Операції з масивами та їх властивості
 
-Arrays can be concatenated using the `~` operator which
-will create a new dynamic array.
+Масиви можуть бути об'єднані за допомогою оператора `~`, який
+створить новий динамічний масив.
 
-Mathematical operations can
-be applied to whole arrays using the `c[] = a[] + b[]` syntax,
-which for example adds all elements of `a` and `b` so that
-`c[0] = a[0] + b[0]`. `c[1] = a[1] + b[1]` etc. It is also possible
-to perform operations on a whole array with a single
-value:
+Математичні операції можуть застосовуваться до цілих масивів з використанням синтаксису `c[] = а[] + b[]`,
+який, наприклад, додає всі елементи `a` до `b` так, що
+`c[0] = а[0] + b[0]`. `c[1] = а[1] + b[1]` і т.д. Крім того, можливо
+виконання операцій з цілим масивом та одним значенням:
 
     a[] *= 2; // multiple all elements by 2
     a[] %= 26; // calculate the modulo by 26 for all a's
 
-Those operations might be optimized
-by the compiler to use special processors instructions that
-do the operations in one go.
+Ці операції можуть бути оптимізовані
+компілятором так, що будуть використанi спеціальні інструкції процесора, які
+завершать операцію за один крок.
 
-Both static and dynamic array provide the property `.length`
-which is read-only for static arrays but can be written to
-in case of dynamic arrays to change its size dynamically. The
-property `.dup` creates a copy of the array.
+Як статичнi, так і динамічнi масиви забезпечують властивість `.length`
+яка призначена тільки для читання у разi статичних масивів, але у разi запису для динамічного масиву може змінювати його розмір. Властивість `.dup` створює копію масиву.
 
-When indexing an array through the `arr[idx]` syntax the special
-`$` syntax denotes an array's length. `arr[$ - 1]` thus
-references the last element and is a short form for `arr[arr.length - 1]`.
+При індексації масиву через `arr[idx]` спеціальний символ
+`$` позначає довжина масиву. Таким чином `arr[$ - 1]` є
+посилання на останній елемент і є короткою формою для `arr[arr.length - 1]`.
 
-### Exercise
+### Вправа
 
-Complete the function `encrypt` to decrypt the secret message.
-The text should be encrypted using *Caesar encryption*
-that shifts the characters in the alphabet using a certain index.
-The to-be-encrypted text just contains characters in the range `a-z`
-which should make things easier.
+Завершіть процедуру `encrypt` для розшифровки секретного повідомлення.
+Текст повинен бути зашифрований з використанням шифрування *Caesar encryption*
+що переміщує символи в алфавіті з використанням певного індексу.
+Текст для шифрування містить тільки символи в діапазоні `а-z`
+що повинно зробити програму простіше.
 
-### In-depth
+### Детальнiше
 
-- [Arrays in _Programming in D_](http://ddili.org/ders/d.en/arrays.html)
-- [Array specification](https://dlang.org/spec/arrays.html)
+- [Масиви в _Programming in D_](http://ddili.org/ders/d.en/arrays.html)
+- [Спецiфiкация на масиви](https://dlang.org/spec/arrays.html)
 
 ## {SourceCode:incomplete}
 
@@ -78,16 +72,14 @@ which should make things easier.
 import std.stdio;
 
 /**
-Shifts every character in the
-array `input` for `shift` characters.
-The character range is limited to `a-z`
-and the next character after z is a.
-
+Зрушує кожен символ
+масиву `input` на `shift` символів.
+Набір символів обмежується `а-z, наступний символ після z є a.
 Params:
-    input = array to shift
-    shift = shift length for each char
+    input = масив для зрушення
+    shift = довжина для зрушення
 Returns:
-    Shifted char array
+    зрушенний масив
 */
 char[] encrypt(char[] input, char shift)
 {
@@ -98,20 +90,19 @@ char[] encrypt(char[] input, char shift)
 
 void main()
 {
-    // We will now encrypt the message with
-    // Caesar encryption and a
-    // shift factor of 16!
+    // Мы зашифруємо повiдомлення за допомогою
+    // Caesar encryption
+    // та фактором зсуву 16!
     char[] toBeEncrypted = [ 'w','e','l','c',
       'o','m','e','t','o','d',
-      // The last , is okay and will just
-      // be ignored!
+      // Остання "," буде видкинута!
     ];
     writeln("Before: ", toBeEncrypted);
     auto encrypted = encrypt(toBeEncrypted, 16);
     writeln("After: ", encrypted);
 
-    // Make sure we the algorithm works
-    // as expected
+    // Переконаємось, що алгоритм работає
+    // як треба.
     assert(encrypted == [ 'm','u','b','s','e',
             'c','u','j','e','t' ]);
 }
