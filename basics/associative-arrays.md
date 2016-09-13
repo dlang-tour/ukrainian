@@ -1,41 +1,40 @@
-# Associative Arrays
+# Асоціативні масиви
 
-D has built-in *associative arrays* also known as hash maps.
-An associative array with a key type of `string` and a value type
-of `int` is declared as follows:
+D має вбудованi *асоціативні масиви* також відомi як HashMaps.
+Асоціативний масив з ключем типу `string` і типом значення
+`int` оголошується наступним чином:
 
     int[string] arr;
 
-The value can be accessed by its key and thus be set:
+За допомогою ключа можна як отримати значення, так i встановити його:
 
     arr["key1"] = 10;
 
-To test whether a key is located in the associative array, the
-`in` expression can be used:
+Щоб перевірити, чи розташован ключ в асоціативному масиві, може бути використан вираз `in`:
 
     if ("key1" in arr)
         writeln("Yes");
 
-The `in` expression returns a pointer to the value if it
-can be found or a `null` pointer otherwise. Thus existence check
-and writes can be conveniently combined:
+Вираз `in` повертає покажчик на значення, якщо його
+можна знайти, або `null` в іншому випадку. Таким чином, перевірка на існування
+і запис можуть бути легко об'єднані:
 
     if (auto val = "key1" in arr)
         *val = 20;
 
-Access to a key which doesn't exist yields an `RangeError`
-that immediately aborts the application. For a safe access
-with a default value, `get(key, defaultValue)` can be used.
+Доступ до ключу, який не існує дає `RangeError`,
+що негайно припиняє виконання програмы. Для безпечного доступу
+зі значенням за замовчуванням може бути використан вираз `get(key, DefaultValue)`.
 
-AA's have the `.length` property like arrays and provide
-a `.remove(val)` member to remove entries by their key.
-It is left as an exercise to the reader to explore
-the special `.byKey` and `.byValue` ranges.
+Асоциативнi масиви, як i звичайнi, мають властивість `.length`, а також
+властивicть `.remove(val)` що видаляє запис по ключу.
+В якості вправи для читача залишається дослідження
+спеціальних діапазонів `.byKey` і `.byValue`.
 
-### In-depth
+### Бiльш інформації
 
-- [Associative arrays in _Programming in D_](http://ddili.org/ders/d.en/aa.html)
-- [Associative arrays specification](https://dlang.org/spec/hash-map.html)
+- [Асоциативнi масиви в _Programming in D_](http://ddili.org/ders/d.en/aa.html)
+- [Специфiкацiя на асоциативнi масиви](https://dlang.org/spec/hash-map.html)
 - [std.array.byPair](http://dlang.org/phobos/std_array.html#.byPair)
 
 ## {SourceCode}
@@ -44,28 +43,28 @@ the special `.byKey` and `.byValue` ranges.
 import std.stdio;
 
 /**
-Splits the given text into words and returns
-an associative array that maps words to their
-respective word counts.
+Розділяє даний текст на слова і повертає
+асоціативний масив, який відображає слова на їх
+лiчильники.
 
 Params:
     text = text to be splitted
 */
 int[string] wordCount(string text)
 {
-    // The function splitter lazily splits the
-    // input into a range
+    // Функцiя splitter лiниво розбивае вхiд
+    // на дiaпазон
     import std.algorithm.iteration: splitter;
     import std.string: toLower;
 
-    // Indexed by words and returning the count
+    // Проiндексовано словами, повертає лiчильник
     int[string] words;
 
     foreach(word; splitter(text.toLower(), " "))
     {
-        // Increment word count if word
-        // has been found.
-        // Integers are by default 0.
+        // Збільшує лiчильник слова, якщо
+        // воно було знайдене.
+        // За замовчуванням значення дорiвнює 0.
         words[word]++;
     }
 
@@ -79,7 +78,7 @@ void main()
     auto wc = wordCount(text);
     writeln("Word counts: ", wc);
 
-    // possible iterations:
+    // можливi ітерації:
     // byKey, byValue, byKeyValue
     foreach (word; wc.byValue)
         writeln(word);
