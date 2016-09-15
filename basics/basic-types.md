@@ -1,11 +1,11 @@
-# Basic types
+# Базовi типи данних
 
-D provides a number of basic types which always have the same
-size **regardless** of the platform - the only exception
-is the `real` type which provides the highest possible floating point
-precision. There is no difference
-between the size of an integer regardless whether the application
-is compiled for 32-bit or 64-bit systems.
+D надає ряд основних типів, які завжди мають той же
+розмір **незалежно**  від платформи - єдиний виняток
+є тип `real`, який забезпечує максимально можливу
+точність числа з плаваючою точкою. Немає ніякої різниці
+між розміром цілого незалежно від того, програма
+скомпільована для 32- або 64-бітової системи.
 
 <table class="table table-hover">
 <tr><td width="250px"><code class="prettyprint">bool</code></td> <td>8-bit</td></tr>
@@ -15,75 +15,73 @@ is compiled for 32-bit or 64-bit systems.
 <tr><td><code class="prettyprint">long, ulong</code></td> <td>64-bit</td></tr>
 </table>
 
-#### Floating point types:
+#### Типи з плаваючою точкою:
 
 <table class="table table-hover">
 <tr><td width="250px"><code class="prettyprint">float</code></td> <td>32-bit</td></tr>
 <tr><td><code class="prettyprint">double</code></td> <td>64-bit</td></tr>
-<tr><td><code class="prettyprint">real</code></td> <td>depending on platform, 80-bit on Intel x86 32-bit</td></tr>
+<tr><td><code class="prettyprint">real</code></td> <td>залежно вiд платформи, 80-бiт на Intel x86-32</td></tr>
 </table>
 
-The prefix `u` denotes *unsigned* types. `char` translates to
-UTF-8 characters, `wchar` is used in UTF-16 strings and `dchar`
-in UTF-32 strings.
+Префікс `u` позначає *беззнаковi* типи. `char` є 
+UTF-8 символом, `wchar` використовується в UTF-16 рядках і `dchar`
+в UTF-32 рядках.
 
-A conversion between variables of different types is only
-allowed by the compiler if no precision is lost. A conversion
-between floating point types (e.g `double` to `float`)
-is allowed though.
+Перетворення між змінними різних типів 
+допускається компілятором лише якщо немає втрати точностi. Хоча конверсія
+між плаваючих типів (наприклад `double` до `float`)
+допускається.
 
-A conversion to another type may be forced by using the
-`cast(TYPE) myVar` expression. It needs to be used with great care though
-as `cast` expression is allowed to break the type system.
+Перетворення в інший тип може бути примусовим при використаннi вираза
+`cast(TYPE) myVar`. Перетворення необхідно використовувати з великою обережністю, оскiльки
+виразу `cast` дозволено порушувати систему типів.
 
-The special keyword `auto` creates a variable and infers its
-type from the right hand side of the expression. `auto myVar = 7`
-will deduce the type `int` for `myVar`. Note that the type is still
-set at compile-time and can't be changed - just like with any other
-variable with an explicitly given type.
+Спеціальне ключове слово `auto` створює змінну і виводить iї
+тип з типу правого боку виразу. `auto MyVar = 7`
+виведе тип `int` для `myVar`. Зверніть увагу, що тип буде
+встановлен під час компіляції і не може бути змінений пiзнiше - так само, як з будь-якою іншою
+змінною з явно заданим типом.
 
-### Type properties
+### Властивостi типiв
 
-All data types have a property `.init` to which they are initialized.
-For all integers this is `0` and for floating points it is `nan` (*not a number*).
+Всі типи даних мають властивість `.init` - значення яким вони iнiциализуються.
+Для всіх цілих чисел це "0", для типiв з плаваючою точкою це `nan` (* Не число *).
 
-Integral and floating point types have a `.max` property for the highest value
-they can represent. Integral types also have a `.min` property for lowest value
-they can represent whereas floating point types have a `.min_normal` property
-which is defined to smallest representable normalized value that's not 0.
+Інтегральні і типи з плаваючою точкою мають `.max` властивість для найвищого значення яке
+вони можуть представляти. Цілі типи також мають властивість `.min` для найменшого значення
+яке вони можуть представляти, в той час як типи з плаваючою точкою мають властивість `.min_normal`
+яка визначається найменшим представимим нормованним значенням, таким що не дорiвнює 0.
 
-Floating point types also have properties `.nan` (NaN-value), `.infinity`
-(infinity value), `.dig` (number of decimal digits of precisions), `.mant_dig`
-(number of bits in mantissa) and more.
+Плаваючі типи точок також мають властивості `.nan` (NaN-значення), `.infinity`
+(значення нескінченності), `.dig` (точнiсть у кількостi десяткових цифр),` .mant_dig`
+(кількість бітів в мантиси) і багато інших.
 
-Every type also has a `.stringof` property which yields its name as a string.
+Кожен тип також має властивість `.stringof`, яка дає його назву у вигляді рядка.
 
-### Indexes in D
+### Iндекси в D
 
-In D indexes have usually the alias type `size_t` as it is a type that
-is large enough to represent an offset into all addressible memory - that is
-`uint` for 32-bit and `ulong` for 64-bit architectures.
+У D індекси мають зазвичай тип псевдоніма `size_t`, так як це є досить великий тип, щоб представляти зміщення в усій адресуємой пам'яті - тобто `uint` для 32-розрядних і `ulong` для 64-розрядних архітектур.
 
 ### Asserts
 
-`assert` is compiler built-in which verifies conditions in debug mode and aborts
-with an `AssertionError` if it fails.
+`assert` є вбудований у компілятор вираз, який перевіряє умови в режимі налагодження і завершує роботу
+з `AssertionError`, якщо умова не виконується.
 
-### In-depth
+### Детальнiше
 
-#### Basic references
+#### Основнi посилання
 
-- [Assignment](http://ddili.org/ders/d.en/assignment.html)
-- [Variables](http://ddili.org/ders/d.en/variables.html)
-- [Arithmetics](http://ddili.org/ders/d.en/arithmetic.html)
-- [Floating Point](http://ddili.org/ders/d.en/floating_point.html)
-- [Fundamental types in _Programming in D_](http://ddili.org/ders/d.en/types.html)
+- [Присвоювання](http://ddili.org/ders/d.en/assignment.html)
+- [Змiннi](http://ddili.org/ders/d.en/variables.html)
+- [Арiфметика](http://ddili.org/ders/d.en/arithmetic.html)
+- [Плаваюча точка](http://ddili.org/ders/d.en/floating_point.html)
+- [Фундаментальнi типи в _Programming in D_](http://ddili.org/ders/d.en/types.html)
 
-#### Advanced references
+#### Детальнiши посилання
 
-- [Overview of all basic data types in D](https://dlang.org/spec/type.html)
-- [`auto` and `typeof` in _Programming in D_](http://ddili.org/ders/d.en/auto_and_typeof.html)
-- [Type properties](https://dlang.org/spec/property.html)
+- [Огляд усiх базових типiв у D](https://dlang.org/spec/type.html)
+- [`auto` та `typeof` в _Programming in D_](http://ddili.org/ders/d.en/auto_and_typeof.html)
+- [Властивостi типiв](https://dlang.org/spec/property.html)
 
 ## {SourceCode}
 
@@ -92,30 +90,30 @@ import std.stdio;
 
 void main()
 {
-    // Big numbers can be separated
-    // with an underscore "_"
-    // to enhance readability.
+    // Велики числа можуть бути
+    // вiдокремленi пiдкреслюванням  "_"
+    // для полiпшення читанiстi.
     int b = 7_000_000;
-    short c = cast(short) b; // cast needed
+    short c = cast(short) b; // потрiбне перетворення
     uint d = b; // fine
     int g;
     assert(g == 0);
 
-    auto f = 3.1415f; // f denotes a float
+    auto f = 3.1415f; // f позначає float
 
-    // typeid(VAR) returns the type information
-    // of an expression.
+    // typeid(VAR) повертає iнформацию про тип
+    // виразу.
     writeln("type of f is ", typeid(f));
     double pi = f; // fine
-    // for floating-point types
-    // implicit down-casting is allowed
+    // для плаваючих типiв
+    // неявне понижуючє приведення допускається
     float demoted = pi;
 
-    // access to type properties
+    // доступ до властивостей типiв
     assert(int.init == 0);
     assert(int.sizeof == 4);
     assert(bool.max == 1);
     writeln(int.min, " ", int.max);
-    writeln(int.stringof); // int
+    writeln(int.stringof); // цiле
 }
 ```
