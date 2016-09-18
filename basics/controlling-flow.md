@@ -1,48 +1,49 @@
-# Control flow
+# Керування потоком
 
-The application's flow can be controlled conditionally with `if` and `else`
-statements:
+Хід виконання програми можна контролювати за допомогою умовних
+операторів `if` та `else`:
 
     if (a == 5) {
-        writeln("Condition is met");
+        writeln("Умова виконується");
     } else if (a > 10) {
-        writeln("Another condition is met");
+        writeln("Інша умова виконується");
     } else {
-        writeln("Nothing is met!");
+        writeln("Нічого не виконується!");
     }
 
-When an `if` or `else` block just contains one statement
-the braces can be omitted.
+Якщо блок `if` чи `else` містить тільки одну команду, фігурні дужки
+можуть бути опущені.
 
-D provides the same operators as C/C++ and Java for testing
-variables for equality or comparing them:
+Для перевірки рівності змінних і їх порівняння D надає такі ж
+оператори, як C/C++ і Java:
 
-* `==` and `!=` for testing equality and inequality
-* `<`, `<=`, `>` and `>=` for testing less (- or equal) and greater (- or equal)
+* `==` і `!=` для перевірки рівності і нерівності
+* `<`, `<=`, `>` і `>=` для перевірки того, що значення менше
+(- і рівне) та більше (- і рівне)
 
-For combining multiple conditions the `||` operator represents
-the logical *OR*, and `&&` the logical *AND*.
+Умови можна комбінувати, використовуючи оператори `||` (Логічне *АБО*) і
+`&&` (логічне *І*).
 
-D also defines a `switch`..`case` statement which executes one case
-depending on the value of *one* variable. `switch`
-works with all basic types as well as strings!
-It's even possible to define ranges for integral types
-using the `case START: .. case END:` syntax. Make sure to
-take a look at the source code example.
+У D також є конструкція `switch`..`case`, яка вибирає одну гілку
+виконання, в залежності від значення *однієї* змінної. `switch` працює
+з усіма основними типами, а також з рядками!
+Для цілих типів є можливість задавати діапазони, використавши
+синтаксис `case START: .. case END:`. Не забудьте ознайомитись з
+прикладом.
 
-### In-depth
+### Додатково
 
-#### Basic references
+#### Основні посилання
 
-- [Logical expressions in _Programming in D_](http://ddili.org/ders/d.en/logical_expressions.html)
-- [If statement in _Programming in D_](http://ddili.org/ders/d.en/if.html)
-- [Ternary expressions in _Programming in D_](http://ddili.org/ders/d.en/ternary.html)
-- [`switch` and `case` in _Programming in D_](http://ddili.org/ders/d.en/switch_case.html)
+- [Логічні вирази у _Programming in D_](http://ddili.org/ders/d.en/logical_expressions.html)
+- [Умовний оператор if у _Programming in D_](http://ddili.org/ders/d.en/if.html)
+- [Тернарний оператор у _Programming in D_](http://ddili.org/ders/d.en/ternary.html)
+- [`switch` та `case` у _Programming in D_](http://ddili.org/ders/d.en/switch_case.html)
 
-#### Advanced references
+#### Додаткові посилання
 
-- [Expressions in detail](https://dlang.org/spec/expression.html)
-- [If Statement specification](https://dlang.org/spec/statement.html#if-statement)
+- [Специфікація на вирази](https://dlang.org/spec/expression.html)
+- [Специфікація на оператор if](https://dlang.org/spec/statement.html#if-statement)
 
 ## {SourceCode}
 
@@ -58,11 +59,11 @@ void main()
     switch(c) {
         case 0: .. case 9:
             writeln(c, " is within 0-9");
-            break; // necessary!
+            break; // необхідно!
         case 10:
             writeln("A Ten!");
             break;
-        default: // if nothing else matches
+        default: // якщо жодна умова не виконалась
             writeln("Nothing");
             break;
     }
