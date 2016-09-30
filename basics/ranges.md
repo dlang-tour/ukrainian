@@ -1,0 +1,84 @@
+# Дiапазони
+
+Коли компiлятор зустрічає вираз `foreach`
+
+foreach(element; range) {
+
+вiн внутрішньо перепиcує його в:
+
+for (; !range.empty; range.popFront()) {
+        auto element = range.front;
+        ...
+
+Будь-який об'єкт, який імплементує вищезгаданий інтерфейс називається **діапазон**
+і може пiдтримувати ітерації:
+
+    struct Range {
+        @property empty() const;
+        void popFront();
+        T front();
+    }
+
+Функції в `std.range` і `std.algorithm` забезпечують
+будівельні блоки, які використовують цей інтерфейс. Діапазони дозволяють
+створювати складні алгоритми оброботки об'єктiв по яким
+може бути проведена ітерація. Крім того діапазони дозволяють створювати **ледачi**
+об'єкти, які виконують обчислення тільки коли це дійсно необхідно, наприклад, коли наступний елемент діапазону є реально доступним.
+Спецiальнi алгоритми для діапазонiв будуть представлени пізніше в секції 
+[Коштовності D] (коштовності/алгоритми-для-дiапазонiв).
+
+### Exercise
+
+Завершить код та створіть дiапазон `FibonacciRange` який повертає числа Фібоначчі
+[послідовність Фібоначчі](https://uk.wikipedia.org/wiki/%D0%9F%D0%BE%D1%81%D0%BB%D1%96%D0%B4%D0%BE%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C_%D0%A4%D1%96%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D1%96).
+Не обдурит себе, видаляючи `assert`-и!
+
+### In-depth
+
+- [`std.algorithm`](http://dlang.org/phobos/std_algorithm.html)
+- [`std.range`](http://dlang.org/phobos/std_range.html)
+
+## {SourceCode:incomplete}
+
+```d
+import std.stdio;
+
+struct FibonacciRange
+{
+    bool empty() const @property 
+    {
+        // Так коли послiдовнiсть Фібоначчі закiнчується?
+    }
+
+    void popFront()
+    {
+    }
+
+    int front() @property
+    {
+    }
+}
+
+void main() {
+    import std.range: take;
+    import std.array: array;
+
+    FibonacciRange fib;
+
+    // `take` создає iнший дiапазон
+    // який повертає максiмум N елементів.
+    // Цей дiапазон є ленивим
+    // та звертається до оригiнального дiапазону
+    // лише коли дiйсно потрiбно
+    auto fib10 = take(fib, 10);
+
+    // Але тут ми бажаємо отримати всі елементи
+    // та перетворити дiапазон у масив цiлих чисел.
+    int[] the10Fibs = array(fib10);
+
+    writeln("The 10 first Fibonacci numbers: ",
+        the10Fibs);
+    assert(the10Fibs ==
+        [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]);
+}
+```
