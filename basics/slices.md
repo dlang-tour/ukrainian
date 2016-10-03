@@ -33,7 +33,7 @@
 
 ### Додатково
 
-- [Ведення у зрiзи в D](http://dlang.org/d-array-article.html)
+- [Введення у зрiзи в D](http://dlang.org/d-array-article.html)
 - [Зрiзи в _Programming in D_](http://ddili.org/ders/d.en/slices.html)
 
 ## {SourceCode}
