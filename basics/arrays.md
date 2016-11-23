@@ -109,7 +109,8 @@ void main()
     auto encrypted = encrypt(toBeEncrypted, 16);
     writeln("After: ", encrypted);
 
-    // Переконаємося, що алгоритм працює коректно
+    // Переконаємося,
+    // що алгоритм працює коректно
     assert(encrypted == [ 'm','u','b','s','e',
             'c','u','j','e','t' ]);
 }

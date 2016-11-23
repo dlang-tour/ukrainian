@@ -58,14 +58,16 @@ int[string] wordCount(string text)
     import std.algorithm.iteration: splitter;
     import std.string: toLower;
 
-    // Проiндексовано словами, повертає кількість
+    // Проiндексовано словами,
+    // повертає кількість
     int[string] words;
 
     foreach(word; splitter(text.toLower(), " "))
     {
         // Збільшує лiчильник слова, якщо
         // воно було знайдене.
-        // За замовчуванням значення дорiвнює 0.
+        // За замовчуванням значення
+        // дорiвнює 0.
         words[word]++;
     }
 
