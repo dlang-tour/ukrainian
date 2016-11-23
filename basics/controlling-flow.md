@@ -63,7 +63,8 @@ void main()
         case 10:
             writeln("A Ten!");
             break;
-        default: // якщо жодна умова не виконалась
+        // якщо жодна умова не виконалась
+        default:
             writeln("Nothing");
             break;
     }

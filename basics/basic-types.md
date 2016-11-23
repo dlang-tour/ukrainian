@@ -100,7 +100,8 @@ void main()
     // вiдокремленi пiдкреслюванням  "_"
     // для полiпшення читабельності.
     int b = 7_000_000;
-    short c = cast(short) b; // потрiбне перетворення
+    // потрiбне перетворення
+    short c = cast(short) b;
     uint d = b; // добре
     int g;
     assert(g == 0);

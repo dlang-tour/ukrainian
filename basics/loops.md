@@ -61,15 +61,17 @@ import std.stdio;
 */
 double average(int[] array) {
     // Властивість .empty для масивів не є
-    // "рідною" у D, але доступ до неї можна отримати,
-    // імпортувавши функцію з std.array
+    // "рідною" у D, але доступ до неї можна
+    // отримати, імпортувавши функцію
+    // з std.array
     import std.array: empty, front;
 
     double accumulator = 0.0;
     auto length = array.length;
     while (!array.empty) {
-        // також це можна зробити за допомогою .front,
-        // зробивши import std.array: front;
+        // також це можна зробити за допомогою
+        // .front, зробивши
+        // import std.array: front;
         accumulator += array[0];
         array = array[1 .. $];
     }
