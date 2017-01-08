@@ -4,3 +4,4 @@ repo: dlang-tour/ukrainian
 ordering:
 - welcome
 - basics
+- gems
