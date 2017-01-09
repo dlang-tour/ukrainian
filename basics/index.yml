@@ -2,10 +2,10 @@ title: Основи D
 ordering:
 - imports-and-modules
 - basic-types
-#- memory
+- memory
 - storage-classes
 - controlling-flow
-#- functions
+- functions
 - structs
 - arrays
 - slices
@@ -15,7 +15,7 @@ ordering:
 - ranges
 - associative-arrays
 #- classes
-#- interfaces
+- interfaces
 #- templates
 #- delegates
 #- exceptions
