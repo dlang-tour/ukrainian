@@ -2,11 +2,11 @@
 
 Коли компiлятор зустрічає вираз `foreach`
 
-foreach(element; range) {
+    foreach(element; range) {
 
 вiн на нижчому рівні перепиcує його в:
 
-for (; !range.empty; range.popFront()) {
+    for (; !range.empty; range.popFront()) {
         auto element = range.front;
         ...
 
