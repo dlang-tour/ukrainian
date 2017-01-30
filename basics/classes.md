@@ -58,7 +58,8 @@ import std.stdio;
   використані для чого-небудь...
 */
 class Any {
-    // доступ до protected - тiльки з успадкованих класiв
+    // доступ до protected - тiльки з
+    // успадкованих класiв
     protected string type;
 
     this(string type) {
