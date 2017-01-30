@@ -14,9 +14,9 @@ ordering:
 - foreach
 - ranges
 - associative-arrays
-#- classes
+- classes
 - interfaces
-#- templates
-#- delegates
+- templates
+- delegates
 #- exceptions
-#- further-reading
+- further-reading

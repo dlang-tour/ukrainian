@@ -58,7 +58,8 @@ import std.stdio;
   використані для чого-небудь...
 */
 class Any {
-    // доступ до protected - тiльки з успадкованих класiв
+    // доступ до protected - тiльки з
+    // успадкованих класiв
     protected string type;
 
     this(string type) {
@@ -82,17 +83,20 @@ class Integer: Any {
 
     // конструктор
     this(int number) {
-        // виклик конструктору базового класу
+        // виклик конструктору
+        // базового класу
         super("integer");
         this.number = number;
     }
 
-    // Неявно. Iнший шлях вказати рiвень захисту:
+    // Неявно. Iнший шлях вказати
+    // рiвень захисту:
     public:
 
     override string convertToString() {
         import std.conv: to;
-        // Швейцарський ніж для перетворення.
+        // Швейцарський ніж для
+        // перетворення.
         return to!string(number);
     }
 }
@@ -107,7 +111,8 @@ class Float: Any {
 
     override string convertToString() {
         import std.string: format;
-        // Ми бажаємо мати контроль над точнiстю.
+        // Ми бажаємо мати контроль
+        // над точнiстю.
         return format("%.1f", number);
     }
 }
@@ -120,7 +125,8 @@ void main()
         ];
 
     foreach (any; anys) {
-        writeln("Будь-який тип = ", any.getType());
+        writeln("Будь-який тип = ",
+            any.getType());
         writeln("Контент = ",
             any.convertToString());
     }
