@@ -13,7 +13,7 @@ Vibe.d дозволяє створювати веб-сервери HTTP(S) за 
         HTTPServerResponse res) { ... }
 
 Для того, щоб спростити стандартні моделі та конфігурації, існує
-клас `URLRouter`, який реєструє `GET, `POST` та інші
+клас `URLRouter`, який реєструє `GET`, `POST` та інші
 обробники з використанням функцій `.get("path", handler)` і
 `.post("path", handler)`, або реєструє власний клас *веб-інтерфейсу*,
 який реалізує шляхи веб-серверу, як функції:
@@ -52,14 +52,14 @@ class WebService
     При використанні змінних сесії, таких
     як ці, інформація, пов'язана з окремими
     користувачами, може зберігатися у всіх
-    запитах на час користувацької сесії.
+    запитах на час існування сесії.
     */
     private SessionVar!(string, "username")
         username_;
 
     /*
     За замовчуванням, запити до кореневого
-    шляху ("/") пов’язані з методом index.
+    шляху ("/") зв’язані з методом index.
     */
     void index(HTTPServerResponse res)
     {
@@ -144,7 +144,7 @@ shared static this()
     router.get("/hello", &helloWorld);
 
     auto settings = new HTTPServerSettings;
-    // Потрибно для використання SessionVar.
+    // Потрібно для використання SessionVar.
     settings.sessionStore =
         new MemorySessionStore;
     settings.port = 8080;
