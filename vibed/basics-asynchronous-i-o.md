@@ -57,7 +57,8 @@ shared static this()
         string line;
         conn.write("ECHO сервер
             каже Привіт!\r\n");
-        conn.write("Тип 'quit' для виходу.\r\n");
+        conn.write("Тип 'quit'
+            для виходу.\r\n");
         while (line != "quit") {
             line = cast(string) conn.readLine();
             conn.write("ECHO: " ~ line
