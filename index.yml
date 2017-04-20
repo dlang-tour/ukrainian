@@ -1,7 +1,8 @@
-title: Dlang Tour
+title: Dlang Тур
 start: welcome/welcome-to-d
 repo: dlang-tour/ukrainian
 ordering:
 - welcome
 - basics
 - gems
+- vibed
