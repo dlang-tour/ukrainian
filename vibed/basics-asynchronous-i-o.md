@@ -55,7 +55,8 @@ shared static this()
     // клієнта.
     listenTCP(8080, (TCPConnection conn) {
         string line;
-        conn.write("ECHO сервер каже Привіт!\r\n");
+        conn.write("ECHO сервер
+            каже Привіт!\r\n");
         conn.write("Тип 'quit' для виходу.\r\n");
         while (line != "quit") {
             line = cast(string) conn.readLine();
