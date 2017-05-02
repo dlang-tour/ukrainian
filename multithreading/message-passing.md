@@ -35,7 +35,7 @@
 
     send(threadId, 42);
 
-`receiveOnly` може бути використаний для досягнення певного виду:
+`receiveOnly` може бути використаний для отримання повідомлення певного виду:
 
     string text = receiveOnly!string();
     assert(text == "Готово");
