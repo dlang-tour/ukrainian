@@ -37,7 +37,8 @@ void main()
     {
         writeln("\t<head>");
         scope(exit) writeln("\t</head>");
-        "\t<title>%s</title>".writefln("Привіт");
+        "\t<title>%s</title>"
+            .writefln("Привіт");
     } // scope(exit) зазначений раніше
       // викликається тут
 
