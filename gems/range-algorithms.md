@@ -88,8 +88,8 @@ to efficient, *native* machine code.};
     auto wordCharCounts = words
       .map!"a.count";
 
-	// Виводить кількість символів
-	// у слові у гарному вигляді,
+    // Виводить кількість символів
+    // у слові у гарному вигляді,
     // починаючи з найменшої
     // кількості символів!
     zip(wordCharCounts, words)
