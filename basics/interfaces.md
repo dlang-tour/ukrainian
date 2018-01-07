@@ -12,15 +12,15 @@ D дозволяє визначити тип `interface`, який техніч�
 він імплементує інтерфейс `Animal`.
 По суті `makeNoise` працює як `abstract`-на функція у базовому класі.
 
-    class Dog: Animal {
+    class Dog : Animal {
         override makeNoise() {
             ...
         }
     }
 
-    auto dog = new Animal;
+    auto dog = new Dog;
     Animal animal = dog; // неявне приведення до типу інтерфейсу
-    dog.makeNoise();
+    animal.makeNoise();
 
 Немає обмежень на кількість `interface`-ів, які можуть бути
 імплементовані у `class`-і, але він може наслідуватись лише від
@@ -77,13 +77,13 @@ interface Animal {
     }
 }
 
-class Dog: Animal {
+class Dog : Animal {
     override void makeNoise() {
         writeln("Гав!");
     }
 }
 
-class Cat: Animal {
+class Cat : Animal {
     override void makeNoise() {
         writeln("М'яу!");
     }

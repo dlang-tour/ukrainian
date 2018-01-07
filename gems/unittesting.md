@@ -14,7 +14,7 @@
         assert(myAbs(1)  == 1);
     }
 
-Це уможливлює пряму [розробку через тестування](https://en.wikipedia.org/wiki/Test-driven_development)
+Це уможливлює пряму [розробку через тестування](https://uk.wikipedia.org/wiki/Test-driven_development)
 за необхідністю.
 
 ### Запуск і реалізація блоків `unittest`
@@ -71,7 +71,7 @@ struct Vector3 {
     // Нічого страшного!
     unittest {
         assert(Vector3(1,0,0).dot(
-          Vector3(0,1,0) == 0);
+          Vector3(0,1,0)) == 0);
     }
 
     string toString() const {

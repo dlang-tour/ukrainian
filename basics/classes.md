@@ -5,7 +5,7 @@ D забезпечує підтримку класів та інтерфейсі
 Будь який `class` неявно успадковується від [`Object`](https://dlang.org/phobos/object.html).
 
     class Foo { } // успадковується від Object
-    class Bar: Foo { } // Bar є також Foo
+    class Bar : Foo { } // Bar є також Foo
 
 Класи у D, як правило, створюються у купі, за допомогою виразу `new`:
 
@@ -19,19 +19,19 @@ D забезпечує підтримку класів та інтерфейсі
 Збирач сміття звiльняє пам'ять об'єкту лише тодi, коли впевниться, що
 ніякіх посилань на об'єкт більше не існує.
 
-#### Успадкування
+### Успадкування
 
 Щоб вказати на те, що функція базового класу була перевизначеною,
 потрібно використати ключове слово `override`. Це дозволяє нам
 запобігти ненавмисному перевизначенню функцій.
 
-    class Bar: Foo {
+    class Bar : Foo {
         override functionFromFoo() {}
     }
 
 У D класи можуть успадковуватись тільки від одного класу.
 
-#### Фiнальнi та абстрактнi функції
+### Фiнальнi та абстрактнi функції
 
 - Щоб заборони перевизначення, функція може мати позначення `final` у
 базовому класі
@@ -75,7 +75,7 @@ class Any {
     abstract string convertToString();
 }
 
-class Integer: Any {
+class Integer : Any {
     // доступ тiльки з класу Integer
     private {
         int number;
@@ -101,7 +101,7 @@ class Integer: Any {
     }
 }
 
-class Float: Any {
+class Float : Any {
     private float number;
 
     this(float number) {
@@ -122,7 +122,7 @@ void main()
     Any[] anys = [
         new Integer(10),
         new Float(3.1415f)
-        ];
+    ];
 
     foreach (any; anys) {
         writeln("Будь-який тип = ",

@@ -28,9 +28,10 @@
     int size = 8; // run-time змінна
     int[] arr = new int[size];
 
-Типом `arr` є `int[]`, який є **зрiзом** (slice), про який поговоримо
-більш детально у наступному розділі. Багатовимірнi масиви можуть бути
-легко створені за допомогою синтаксису `auto arr = new int[3][3]`.
+Типом `arr` є `int[]`, який також зветься **зрiзом** (slice), про який
+поговоримо більш детально у [наступному розділі](basics/slices).
+Багатовимірнi масиви можуть бути легко створені за допомогою синтаксису
+`auto arr = new int[3][3]`.
 
 #### Операції з масивами та їх властивості
 
@@ -70,6 +71,7 @@
 ### Додатково
 
 - [Масиви у _Programming in D_](http://ddili.org/ders/d.en/arrays.html)
+- [Зрiзи D](https://dlang.org/d-array-article.html)
 - [Специфiкація на масиви](https://dlang.org/spec/arrays.html)
 
 ## {SourceCode:incomplete}
@@ -93,7 +95,7 @@ import std.stdio;
 char[] encrypt(char[] input, char shift)
 {
     auto result = input.dup;
-    // ...
+    // TODO: змінити кожен символ
     return result;
 }
 

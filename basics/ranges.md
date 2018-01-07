@@ -2,24 +2,39 @@
 
 Коли компiлятор зустрічає вираз `foreach`
 
-    foreach(element; range) {
+```
+foreach (element; range)
+{
+    // Тіло циклу...
+}
+```
 
 вiн на нижчому рівні перепиcує його в:
 
-    for (; !range.empty; range.popFront()) {
-        auto element = range.front;
-        ...
+```
+for (auto __rangeCopy = range;
+     !__rangeCopy.empty;
+     __rangeCopy.popFront())
+ {
+    auto element = __rangeCopy.front;
+    // Тіло циклу...
+}
+```
 
-Будь-який об'єкт, який імплементує вищезгаданий інтерфейс, називається
+Будь-який об'єкт, який імплементує наступний інтерфейс, називається
 **діапазон** і може пiдтримувати ітерації:
 
-    struct Range {
-        @property empty() const;
+```
+    struct Range
+    {
+        T front() const @property;
+        bool empty() const @property;
         void popFront();
-        T front();
     }
+```
 
-Функції у `std.range` і `std.algorithm` забезпечують будівельні блоки,
+Функції у [`std.range`](http://dlang.org/phobos/std_range.html) і
+[`std.algorithm`](http://dlang.org/phobos/std_algorithm.html) забезпечують будівельні блоки,
 які використовують цей інтерфейс. Діапазони дозволяють створювати
 складні алгоритми обробки об'єктiв, по яким може бути проведена
 ітерація. Крім того, діапазони дозволяють створювати **ледачi**
@@ -56,12 +71,13 @@ struct FibonacciRange
     {
     }
 
-    int front() @property
+    int front() const @property
     {
     }
 }
 
-void main() {
+void main()
+{
     import std.range: take;
     import std.array: array;
 

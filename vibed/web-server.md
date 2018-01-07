@@ -137,7 +137,7 @@ void helloWorld(HTTPServerRequest req,
     res.writeBody("Hello");
 }
 
-shared static this()
+void main()
 {
     auto router = new URLRouter;
     router.registerWebInterface(new WebService);
@@ -149,5 +149,6 @@ shared static this()
         new MemorySessionStore;
     settings.port = 8080;
     listenHTTP(settings, router);
+    runApplication();
 }
 ```
