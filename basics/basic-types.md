@@ -7,13 +7,13 @@ D надає ряд основних типів, які завжди мають 
 між розміром цілого числа незалежно від того, чи була програма
 скомпільована для 32-бітової чи 64-бітової системи.
 
-<table class="table table-hover">
-<tr><td width="250px"><code class="prettyprint">bool</code></td> <td>8 біт</td></tr>
-<tr><td><code class="prettyprint">byte, ubyte, char</code></td> <td>8 біт</td></tr>
-<tr><td><code class="prettyprint">short, ushort, wchar</code></td> <td>16 біт</td></tr>
-<tr><td><code class="prettyprint">int, uint, dchar</code></td> <td>32 біта</td></tr>
-<tr><td><code class="prettyprint">long, ulong</code></td> <td>64 біта</td></tr>
-</table>
+| Тип                           | Розмір
+|-------------------------------|------------
+|`bool`                         | 8 біт
+|`byte`, `ubyte`, `char`        | 8 біт
+|`short`, `ushort`, `wchar`     | 16 біт
+|`int`, `uint`, `dchar`         | 32 біта
+|`long`, `ulong`                | 64 біта
 
 #### Типи з плаваючою точкою:
 
@@ -22,6 +22,12 @@ D надає ряд основних типів, які завжди мають 
 <tr><td><code class="prettyprint">double</code></td> <td>64 біта</td></tr>
 <tr><td><code class="prettyprint">real</code></td> <td>залежно вiд платформи, 80 бiт на Intel x86-32</td></tr>
 </table>
+
+| Тип     | Розмір
+|---------|--------------------------------------------------
+|`float`  | 32 біта
+|`double` | 64 біта
+|`real`   | >= 64 біта (зазвичай 64 біта, але 80 біт на Intel x86-32)
 
 Префікс `u` позначає *беззнаковi* (unsigned) типи. `char` є UTF-8
 символом, `wchar` використовується в UTF-16 рядках і `dchar` в UTF-32 рядках.
@@ -67,11 +73,10 @@ iнiціалізуються. Для всіх цілих чисел це "0", д
 пам'яті - тобто `uint` для 32-розрядних і `ulong` для 64-розрядних
 архітектур.
 
-### Asserts
+### Asserts вирази
 
-`assert` є вбудований у компілятор вираз, який перевіряє умови у режимі
-налагодження (Debug) і завершує роботу з `AssertionError`, якщо умова
-не виконується.
+`assert`  - це вираз, який перевіряє умови у режимі налагодження (Debug)
+і завершує роботу з `AssertionError`, якщо умова не виконується.
 
 ### Детальнiше
 
@@ -88,6 +93,7 @@ iнiціалізуються. Для всіх цілих чисел це "0", д
 - [Огляд усiх базових типiв у D](https://dlang.org/spec/type.html)
 - [`auto` та `typeof` у _Programming in D_](http://ddili.org/ders/d.en/auto_and_typeof.html)
 - [Властивостi типiв](https://dlang.org/spec/property.html)
+- [Assert вирази](https://dlang.org/spec/expression.html#AssertExpression)
 
 ## {SourceCode}
 

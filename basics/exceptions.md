@@ -82,8 +82,9 @@ bool lessThan(int a, int b) nothrow
 
 Важливо уникати контрактного програмування для введення користувацьких
 даних, так як контракти видаляються при компіляції релізної версії програми.
-Для зручності `std.exception` має ключове слово `enforce`, яке можна
-використовувати як `assert`, але буде виникати об'єкт `Exceptions`
+Для зручності [`std.exception`](https://dlang.org/phobos/std_exception.html)
+має ключове слово [`enforce`](https://dlang.org/phobos/std_exception.html#enforce),
+яке можна використовувати як `assert`, але буде виникати об'єкт `Exceptions`
 замість `AssertError`.
 
 ```d
@@ -96,7 +97,8 @@ enforce!StringException('a' != 'A', "Чуттєвий до регістру ал
 ```
 
 Однак, `std.exception` містить більше цікавих речей. Наприклад, якщо
-помилка не матиме смертельні наслідки, можна обробити її з `collect`:
+помилка не матиме смертельні наслідки, можна обробити її з 
+[`collect`](https://dlang.org/phobos/std_exception.html#collectException):
 
 ```d
 import std.exception : collectException;
@@ -106,7 +108,7 @@ if (e)
 ```
 
 Щоб перевірити, чи відбулося виключення (для тестів наприклад),
-використовуйте `assertThrown`.
+використовуйте [`assertThrown`](https://dlang.org/phobos/std_exception.html#assertThrown).
 
 ### Додатково
 

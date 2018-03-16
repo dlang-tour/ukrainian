@@ -10,7 +10,8 @@
 інші функції, які також є `pure`.
 
     int add(int lhs, int rhs) pure {
-        // ПОМИЛКА: impureFunction();
+        // ПОМИЛКА: неможливо викликати impureFunction тут
+        // impureFunction();
         return lhs + rhs;
     }
 
@@ -66,10 +67,11 @@ BigInt bigPow(uint base, uint power) pure
 void main()
 {
     import std.datetime : benchmark, to;
-    import std.functional : memoize;
+    import std.functional : memoize,
+        reverseArgs;
     import std.stdio : writefln, writeln;
 
-	// memoize кешує результат функції,
+    // memoize кешує результат функції,
     // результат якої залежить від
     // вхідних параметрів. Чисті функції
     // чудово підходять для цього!
@@ -78,13 +80,14 @@ void main()
     void test()
     {
         writefln(".uintLength() = %s ",
-        	   fastBigPow(5, 10000).uintLength);
+          fastBigPow(5, 10000).uintLength);
     }
 
     foreach (i; 0 .. 10)
         benchmark!test(1)[0]
-        	.to!("msecs", double)
-        	.writeln("took: miliseconds");
+            .to!("msecs", double)
+            .reverseArgs!writefln(" took:
+                %.2f miliseconds");
 }
 ```
 
